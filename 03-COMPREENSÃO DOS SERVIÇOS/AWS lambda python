@@ -1,0 +1,16 @@
+import json
+
+def lambda_handler(event, context):
+    # Obtém o parâmetro 'nome' enviado no evento (ou usa um valor padrão)
+    nome = event.get('nome', 'Visitante')
+    
+    # Cria a mensagem
+    mensagem = f"Olá, {nome}! Bem-vindo ao AWS Lambda."
+    
+    # Retorna a resposta no formato HTTP esperado
+    return {
+        'statusCode': 200,
+        'body': json.dumps({
+            'message': mensagem
+        })
+    }
