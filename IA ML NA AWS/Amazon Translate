@@ -1,0 +1,14 @@
+import boto3
+
+# Inicializa o cliente do Amazon Translate
+translate = boto3.client(service_name='translate', region_name='us-east-1')
+
+# Executa a tradução passando os códigos de idioma
+response = translate.translate_text(
+    Text='Olá, como posso ajudar você hoje?',
+    SourceLanguageCode='pt',
+    TargetLanguageCode='en'
+)
+
+print(response.get('TranslatedText'))
+# Saída esperada: Hello, how can I help you today?
