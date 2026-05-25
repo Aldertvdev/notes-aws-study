@@ -1,0 +1,28 @@
+Python 
+
+import boto3
+
+# 1. Conectar ao DynamoDB
+dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+tabela = dynamodb.Table('Usuarios')
+
+# 2. Inserir um item (Equivalente a adicionar um registro JSON)
+tabela.put_item(
+    Item={
+        'id_usuario': '123',
+        'nome': 'Ana Silva',
+        'email': 'ana@exemplo.com'
+    }
+)
+print("Dados inseridos com sucesso!")
+
+# 3. Ler o item
+resposta = tabela.get_item(
+    Key={
+        'id_usuario': '123'
+    }
+)
+
+# 4. Exibir o resultado
+usuario = resposta.get('Item')
+print("Usuário encontrado:", usuario)
