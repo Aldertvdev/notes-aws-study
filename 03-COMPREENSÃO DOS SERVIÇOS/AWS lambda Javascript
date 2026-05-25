@@ -1,0 +1,16 @@
+exports.handler = async (event) => {
+    // Obtém o parâmetro 'nome' enviado no evento
+    const nome = event.nome || 'Visitante';
+    
+    // Cria a mensagem
+    const mensagem = `Olá, ${nome}! Bem-vindo ao AWS Lambda.`;
+    
+    // Retorna a resposta
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify({
+            message: mensagem,
+        }),
+    };
+    return response;
+};
